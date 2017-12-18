@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>运营中 ( {{ ps|length }} )</h1>
+    <div class="container">
+        <table data-toggle="table" id="product-table" data-search="true">
+            <thead>
+            <tr>
+                <th data-sortable="true">代码</th>
+                <th data-sortable="true">产品名称</th>
+                <th data-sortable="true">计划</th>
+                <th data-sortable="true">已经</th>
+                <th data-sortable="true">剩余</th>
+                <th data-sortable="true">募集金额</th>
+                <th data-sortable="true">当前净值</th>
+                <th data-sortable="true">收益率</th>
+                <th data-sortable="true">年化</th>
+                <th data-sortable="true">开始时间</th>
+                <th data-sortable="true">结束时间</th>
+                <th data-sortable="true">发起人</th>
+                <th data-sortable="true">管理人</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in ps %}
+                <tr>
+                    <td>{{ p.plan_code }}</td>
+                    <td>{{ p.product_name }}</td>
+                    <td>{{ p.operation_time }}</td>
+                    <td>{{ p.t }}</td>
+                    <td>{{ p.lt }}</td>
+                    <td>{{ p.launch_money }}</td>
+                    <td>{{ p.EQUITY }}</td>
+                    <td>{{ p.profit }}</td>
+                    <td>{{ p.profit_year }}</td>
+                    <td>{{ p.operation_start }}</td>
+                    <td>{{ p.operation_end }}</td>
+                    <td>{{ p.initiator }}</td>
+                    <td>{{ p.manager }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+
+    </script>
+{% endblock %}

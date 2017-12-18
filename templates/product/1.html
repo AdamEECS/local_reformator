@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>募集中 ( {{ ps|length }} )</h1>
+<div class="container">
+    <table data-toggle="table" id="product-table" data-search="true">
+        <thead>
+        <tr>
+            <th data-sortable="true">代码</th>
+            <th data-sortable="true">产品名称</th>
+            <th data-sortable="true">运营周期</th>
+            <th data-sortable="true">募集金额</th>
+            <th data-sortable="true">剩余发起</th>
+            <th data-sortable="true">剩余跟投</th>
+            <th data-sortable="true">发起人</th>
+            <th data-sortable="true">管理人</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in ps %}
+        <tr>
+            <td >{{ p.plan_code }}</td>
+            <td >{{ p.product_name }}</td>
+            <td >{{ p.operation_time }}</td>
+            <td>{{ p.launch_money }}</td>
+            <td>{{ p.remaining_ori_money }}</td>
+            <td>{{ p.remaining_money }}</td>
+            <td>{{ p.initiator }}</td>
+            <td>{{ p.manager }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+</script>
+{% endblock %}
