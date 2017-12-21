@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>{{ p.product_name }} ( {{ p.plan_code }} )</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div>状态: {{ p.phase|phase }}</div>
+            <div>定制: {{ p.is_customization }}</div>
+            <div>运营天数: {{ p.operation_time }}</div>
+            <div>跟投收益: {{ p.voter_profit }}</div>
+            <div>平仓线: {{ p.so_line / p.launch_money * 100 }}%</div>
+            <div>发起人: {{ p.initiator }}</div>
+            <div>管理人: {{ p.manager }}</div>
+        </div>
+        <div class="col-md-4">
+            <div>募集金额: {{ p.launch_money }}</div>
+            <div>发起比例: {{ p.om_input_ratio }}</div>
+            <div>发起金额: {{ p.originator_input }}</div>
+            <div>剩余发起: {{ p.remaining_ori_money }}</div>
+            <div>剩余跟投: {{ p.remaining_money }}</div>
+            <div>最小投入: {{ p.min_input }}</div>
+            <div>发起截止日期: {{ p.launch_end }}</div>
+        </div>
+        <div class="col-md-4">
+            <div>净值: {{ p.EQUITY }}</div>
+            <div>actual_operation: {{ p.actual_operation }}</div>
+            <div>product_type: {{ p.product_type }}</div>
+            <div>product_symbol: {{ p.product_symbol }}</div>
+            <div>运营开始日期: {{ p.operation_start }}</div>
+            <div>运营结束日期: {{ p.operation_end }}</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <table data-toggle="table" id="product-table" data-search="true">
+            <thead>
+            <tr>
+                <th data-sortable="true">昵称</th>
+                <th data-sortable="true">身份</th>
+                <th data-sortable="true">launch_type</th>
+                <th data-sortable="true">当前净值</th>
+                <th data-sortable="true">投入金额</th>
+                <th data-sortable="true">om_equal</th>
+                <th data-sortable="true">发起时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in pu %}
+                <tr>
+                    <td>{{ p.nickname }}</td>
+                    <td>{{ p.role|role }} {{ p.is_master_ori|role2 }}</td>
+                    <td>{{ p.launch_type }}</td>
+                    <td>{{ p.investor_capital_total }}</td>
+                    <td>{{ p.investor_capital_total_init }}</td>
+                    <td>{{ p.om_equal }}</td>
+                    <td>{{ p.create_time }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+
+    </script>
+{% endblock %}

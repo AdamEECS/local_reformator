@@ -1,5 +1,7 @@
 from config.key import headers, url_base
 from models.product import Product
+from models.product_user import ProductUser
+from models.user import User
 import time
 import json
 import requests

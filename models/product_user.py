@@ -1,14 +1,22 @@
 from . import MongoModel
-from . import timestamp, time_str
 
 
-class User(MongoModel):
+class ProductUser(MongoModel):
     @classmethod
     def _fields(cls):
         fields = [
+            ('id', int, -1),
             ('uid', int, -1),
+            ('role', int, -1),
+            ('launch_type', int, -1),
+            ('is_master_ori', int, -1),
+            ('investor_capital_total', float, -1),
+            ('investor_capital_total_init', int, -1),
+            ('investor_login', int, -1),
+            ('om_equal', int, -1),
             ('nickname', str, ''),
-            ('history', list, []),
+            ('plan_code', str, ''),
+            ('create_time', str, ''),
         ]
         fields.extend(super()._fields())
         return fields
@@ -16,6 +24,7 @@ class User(MongoModel):
     @classmethod
     def new(cls, form=None, **kwargs):
         m = super().new(form)
+        m.id = int(form.get('id', -1))
         m.save()
         return m
 
@@ -26,10 +35,5 @@ class User(MongoModel):
         if m is None:
             m = cls.new(form)
         else:
-            name = form.get('nickname')
-            if m.nickname != name:
-                m.history.append([m.nickname, time_str(timestamp())])
-                m.nickname = name
-                m.ut = timestamp()
-                m.save()
+            m.update(form)
         return m

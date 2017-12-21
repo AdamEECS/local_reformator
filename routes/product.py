@@ -1,5 +1,6 @@
 from . import *
 from models.product import Product
+from models.product_user import ProductUser
 
 main = Blueprint('product', __name__)
 
@@ -36,3 +37,10 @@ def index(phase):
         p.t = t
         p.lt = int(p.operation_time) - t
     return render_template(d[phase], u=u, ps=ps)
+
+
+@main.route('/d/<code>')
+def detail(code):
+    p = Product.find_one(plan_code=code)
+    pu = ProductUser.find(plan_code=code)
+    return render_template('product_user.html', p=p, pu=pu)

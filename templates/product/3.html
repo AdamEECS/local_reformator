@@ -21,8 +21,8 @@
             <tbody>
             {% for p in ps %}
                 <tr>
-                    <td>{{ p.plan_code }}</td>
-                    <td>{{ p.product_name }}</td>
+                    <td><a href="{{ url_for('product.detail', code=p.plan_code) }}">{{ p.plan_code }}</a></td>
+                    <td><a href="{{ url_for('product.detail', code=p.plan_code) }}">{{ p.product_name }}</a></td>
                     <td>{{ p.operation_time }}</td>
                     <td>{{ p.t }}</td>
                     <td>{{ p.launch_money }}</td>
