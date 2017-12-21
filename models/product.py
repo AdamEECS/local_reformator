@@ -48,6 +48,7 @@ class Product(MongoModel):
         m = cls.find_one(id=mid)
         if m is None:
             m = cls.new(form)
+            print(m)
         else:
             m.update(form)
         return m
