@@ -46,7 +46,9 @@ def manager_monitor():
         product['phase'] = 1
         p = Product.upsert(product)
         # if p.manager_uid == 68 and p.is_customization == 0:
-            # alarm.play()
+        #     alarm.play()
+        if p.id > 294 and p.is_customization == 0:
+            alarm.play()
             # pyglet.app.run()
 
 
