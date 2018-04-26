@@ -16,9 +16,9 @@ def task_product_user():
 
 
 def main():
-    task_daily()
-    # task_all()
-    # task_product_user()
+    # task_daily()
+    task_all()
+    task_product_user()
 
 
 if __name__ == '__main__':
