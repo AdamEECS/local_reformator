@@ -1,7 +1,7 @@
 from . import *
 
 
-def get_product(tp=1, start=0, limit=100):
+def get_product(tp=1, start=0, limit=1000):
     url = url_base + 'Vote/get_product'
     data = {
         'type': tp,
