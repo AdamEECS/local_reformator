@@ -11,7 +11,7 @@ class ProductUser(MongoModel):
             ('launch_type', int, -1),
             ('is_master_ori', int, -1),
             ('investor_capital_total', float, -1),
-            ('investor_capital_total_init', int, -1),
+            ('investor_capital_total_init', float, -1),
             ('investor_login', int, -1),
             ('om_equal', int, -1),
             ('nickname', str, ''),
