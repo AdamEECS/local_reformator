@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>我的 ( {{ ps|length }} ) {{ u.all_profit | round }}</h1>
+    <div class="container">
+        <table data-toggle="table" id="product-table" data-search="true" data-pagination="true" data-striped="true" data-page-size="25">
+            <thead>
+            <tr>
+                <th data-sortable="true">代码</th>
+                <th data-sortable="true">产品名称</th>
+                <th data-sortable="true">状态</th>
+                <th data-sortable="true">计划</th>
+                <th data-sortable="true">实际</th>
+                <th data-sortable="true">募集金额</th>
+                <th data-sortable="true">当前净值</th>
+                <th data-sortable="true">收益率</th>
+                <th data-sortable="true">年化</th>
+                <th data-sortable="true">我的投入</th>
+                <th data-sortable="true">我的产出</th>
+                <th data-sortable="true">我的收益</th>
+                <th data-sortable="true">结束时间</th>
+                <th data-sortable="true">发起人</th>
+                <th data-sortable="true">管理人</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in ps %}
+                <tr>
+                    <td><a href="{{ url_for('product.detail', code=p.plan_code) }}">{{ p.plan_code }}</a></td>
+                    <td><a href="{{ url_for('product.detail', code=p.plan_code) }}">{{ p.product_name }}</a></td>
+                    <td>{{ p.phase | phase }}</td>
+                    <td>{{ p.operation_time }}</td>
+                    <td>{{ p.t }}</td>
+                    <td>{{ p.launch_money }}</td>
+                    <td>{{ p.EQUITY }}</td>
+                    <td>{{ p.profit }}</td>
+                    <td>{{ p.profit_year }}</td>
+                    <td>{{ p.my_in }}</td>
+                    <td>{{ p.my_out | round }}</td>
+                    <td>{{ p.my_profit | round }}</td>
+                    <td>{{ p.operation_end }}</td>
+                    <td>{{ p.initiator }}</td>
+                    <td>{{ p.manager }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+
+    </script>
+{% endblock %}
